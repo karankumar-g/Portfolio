@@ -39,7 +39,7 @@ export const PERSONAL_INFO = {
     },
     {
       title: 'Scalable Data & Analytics Pipelines',
-      description: 'Quality in, quality out. Robust ETL pipelines, clean data preparation for pharma analytics, vector indexing, and rigorous automated evaluations.',
+      description: 'Quality in, quality out. Robust cloud SDK ETL pipelines, clean data preparation for pharma analytics, vector indexing, and rigorous automated evaluations.',
       emoji: '📊'
     },
     {
@@ -85,6 +85,42 @@ export const PROJECTS: Project[] = [
       { title: 'Evaluation & Logging', description: 'Automated scoring for faithfulness, relevancy, and experiment tracking.', tech: 'MLflow', badge: 'Step 04' }
     ],
     gradient: 'from-violet-600/20 via-indigo-600/10 to-cyan-500/20',
+    featured: true
+  },
+  {
+    id: 'ace-etl',
+    title: 'ACE-ETL',
+    tagline: 'Multi-Source Cloud SDK Ingestion & LLM-Driven DBT Orchestration',
+    category: 'Data Engineering & ETL',
+    stack: ['Django', 'LLMs', 'React', 'Cloud SDKs', 'DBT', 'Prefect', 'Azure Blob', 'AWS S3', 'PostgreSQL'],
+    metrics: [
+      {
+        label: 'Automation Rate',
+        value: '92%',
+        numValue: 92,
+        suffix: '%',
+        description: 'Of DBT transformation SQL scripts auto-generated and validated by LLM'
+      }
+    ],
+    bullets: [
+      'Built scalable multi-source ETL pipelines using custom cloud SDK-based transfers (Azure Blob, AWS S3), enabling flexible, customer-specific high-throughput data ingestion.',
+      'Implemented LLM-driven DBT SQL generation and validation with Prefect-based orchestration, improving data accuracy and execution reliability while minimizing manual intervention.',
+      'Engineered an interactive React monitoring console with real-time pipeline status, schema diffing, and automated failure recovery.'
+    ],
+    highlights: [
+      'High-throughput cloud SDK batch streaming across Azure Blob and AWS S3',
+      'Schema-aware LLM synthesis for DBT SQL models with dry-run assertions',
+      'Asynchronous DAG orchestration and error recovery using Prefect',
+      'Real-time pipeline observability dashboard in React'
+    ],
+    architectureOverview: 'Prefect workflow engine coordinates custom cloud SDK batch workers, dumps raw partitions into S3/Blob, prompts LLM for schema-aware DBT transformation SQL, validates against dry-run SQL engine, and materializes into PostgreSQL/Warehouse.',
+    flowSteps: [
+      { title: 'Multi-Source SDK Streaming', description: 'Extracts data via high-throughput cloud SDK batch streams from Azure Blob and AWS S3.', tech: 'Python SDKs & Cloud Storage', badge: 'Step 01' },
+      { title: 'Schema Introspection', description: 'Introspects source tables and generates schema contracts automatically.', tech: 'Python Introspection', badge: 'Step 02' },
+      { title: 'LLM DBT SQL Generation', description: 'Generates optimized DBT SQL models with built-in tests and sanity validations.', tech: 'LLM Prompt Chain + DBT', badge: 'Step 03' },
+      { title: 'Pipeline Orchestration', description: 'Asynchronous DAG execution with automated retries and Slack/Email alerting.', tech: 'Prefect & Celery', badge: 'Step 04' }
+    ],
+    gradient: 'from-cyan-600/20 via-teal-600/10 to-emerald-500/20',
     featured: true
   },
   {
@@ -218,6 +254,11 @@ export const EXPERIENCES: ExperienceItem[] = [
         impactMetric: '<450ms Multi-Turn Latency'
       },
       {
+        point: 'Built scalable cloud SDK ETL pipelines and DBT transformations (Azure Blob, AWS S3, PostgreSQL) orchestrated by Prefect for high-throughput batch and stream ingestion.',
+        tags: ['Cloud SDKs', 'DBT', 'Prefect', 'PostgreSQL', 'Python'],
+        impactMetric: 'Automated Ingestion Pipelines'
+      },
+      {
         point: 'Implemented Sales Automation workflows using Salesforce CRM integrated with WhatsApp for real-time customer communication, streamlined lead management, and automated follow-up reporting.',
         tags: ['Salesforce', 'WhatsApp API', 'Webhooks', 'CRM Automation', 'Python'],
         impactMetric: 'Automated Lead & Follow-Up Sync'
@@ -235,6 +276,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     keyWins: [
       'Engineered enterprise RAG platform adopted across multi-tenant clients',
       'Built automated Salesforce CRM & WhatsApp real-time sales communication integration',
+      'Architected cloud SDK ETL pipelines and DBT data modeling workflows',
       'Developed specialized pharma analytics dashboards for HCP and patient journey intelligence'
     ]
   }
@@ -323,10 +365,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
   {
     category: 'Tools & Orchestration',
-    description: 'Workflow orchestrators, pharma data prep tools, testing, and cloud',
+    description: 'Workflow orchestrators, cloud SDKs, data prep tools, testing, and cloud',
     skills: [
       { name: 'Prefect', level: 'Advanced', highlight: true, description: 'Modern workflow orchestration, DAGs', percentage: 90 },
       { name: 'DBT', level: 'Advanced', highlight: true, description: 'Data modeling, transformation, data prep', percentage: 90 },
+      { name: 'Cloud SDKs (AWS/Azure)', level: 'Expert', highlight: true, description: 'Direct cloud storage transfer & batch pipelines', percentage: 92 },
       { name: 'Git & GitHub', level: 'Expert', description: 'Branching, GitHub Actions CI/CD', percentage: 95 },
       { name: 'Playwright', level: 'Advanced', description: 'Browser automation, E2E testing', percentage: 86 },
       { name: 'N8N Automation', level: 'Advanced', description: 'Node-based workflows and webhooks', percentage: 85 },
@@ -437,7 +480,7 @@ export const TIMELINE_JOURNEY = [
     title: 'Software Engineer @ Data Aces',
     institution: 'Data Aces, Chennai',
     badge: 'Enterprise AI, CRM & Backend Systems',
-    narrative: 'Building high-throughput RAG platforms, Salesforce WhatsApp sales automation, LangGraph-driven multi-agent systems, and specialized pharma data preparation dashboards for enterprise clients.',
+    narrative: 'Building high-throughput RAG platforms, Salesforce WhatsApp sales automation, cloud SDK ETL pipelines, LangGraph-driven multi-agent systems, and specialized pharma data preparation dashboards for enterprise clients.',
     accentColor: '#7C3AED'
   }
 ];
