@@ -9,10 +9,12 @@ import {
   MapPin, 
   Sparkles, 
   Award, 
-  Zap, 
   ChevronRight,
+  Code2,
+  Bot,
   Database,
-  Bot
+  Cloud,
+  Send
 } from 'lucide-react';
 import { PERSONAL_INFO, PROJECTS } from '../data/portfolioData';
 import { HeroBentoWidget } from '../components/HeroBentoWidget';
@@ -28,17 +30,17 @@ const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.08 },
   },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24, scale: 0.98 },
+  hidden: { opacity: 0, y: 20, scale: 0.98 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -48,16 +50,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const heroNameRef = useRef<HTMLSpanElement | null>(null);
 
-  // Typewriter effect for role titles
+  // Typewriter effect for clean human roles
   useEffect(() => {
     const currentRole = PERSONAL_INFO.rolesList[roleIndex];
-    const typingSpeed = isDeleting ? 35 : 75;
+    const typingSpeed = isDeleting ? 30 : 65;
 
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         setDisplayedText(currentRole.slice(0, displayedText.length + 1));
         if (displayedText.length + 1 === currentRole.length) {
-          setTimeout(() => setIsDeleting(true), 2400);
+          setTimeout(() => setIsDeleting(true), 2200);
         }
       } else {
         setDisplayedText(currentRole.slice(0, displayedText.length - 1));
@@ -71,25 +73,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
     return () => clearTimeout(timeout);
   }, [displayedText, isDeleting, roleIndex]);
 
-  // Initial scramble text for name
   useEffect(() => {
     if (heroNameRef.current) {
-      scrambleText(heroNameRef.current, PERSONAL_INFO.name, 900);
+      scrambleText(heroNameRef.current, PERSONAL_INFO.name, 800);
     }
   }, []);
 
   return (
-    <div className="space-y-24 pt-24 sm:pt-28 pb-12">
+    <div className="space-y-20 pt-24 sm:pt-28 pb-12">
       {/* 1. HERO SECTION */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Heading & Copy */}
+          {/* Left Column */}
           <motion.div 
             className="lg:col-span-7 space-y-6"
-            initial={{ opacity: 0, x: -25, rotateY: 3 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            style={{ perspective: '1200px' }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full apple-glass text-xs font-mono text-slate-300">
@@ -97,27 +97,26 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
               <span>{PERSONAL_INFO.currentStatus}</span>
             </div>
 
-            {/* Main Display Headline */}
+            {/* Headline */}
             <div className="space-y-2">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight font-display text-white">
                 Hi, I'm <span ref={heroNameRef} className="text-gradient-violet-cyan">{PERSONAL_INFO.name}</span>
               </h1>
 
-              {/* Typewriter Subtitle */}
-              <div className="h-10 flex items-center gap-2">
+              <div className="h-9 flex items-center gap-2">
                 <span className="text-lg sm:text-2xl font-mono text-accent-teal font-medium">
                   {displayedText}
                 </span>
-                <span className="w-2 h-6 bg-accent-violet animate-pulse rounded-sm" />
+                <span className="w-2 h-5 bg-accent-violet animate-pulse rounded-sm" />
               </div>
             </div>
 
-            {/* Engaging One-Liner */}
+            {/* Clear, Human Bio */}
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-sans max-w-2xl">
-              Building <span className="text-white font-semibold">scalable enterprise backends</span>, <span className="text-white font-semibold">intelligent RAG pipelines</span>, and <span className="text-accent-teal font-semibold">LangGraph-based multi-agent workflows</span> that bridge AI with reliable software systems.
+              I build <span className="text-white font-semibold">web applications</span>, <span className="text-white font-semibold">conversational AI assistants</span>, and <span className="text-accent-teal font-semibold">backend data pipelines</span> that work reliably in production.
             </p>
 
-            {/* Metadata Badges */}
+            {/* Quick Badges */}
             <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-slate-400 pt-1">
               <span className="flex items-center gap-1.5 apple-glass px-3 py-1.5 rounded-xl">
                 <MapPin className="w-3.5 h-3.5 text-accent-amber" />
@@ -129,18 +128,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
               </span>
               <span className="flex items-center gap-1.5 apple-glass px-3 py-1.5 rounded-xl">
                 <Award className="w-3.5 h-3.5 text-accent-cyan" />
-                MCA • Postgraduate Distinction
+                MCA Distinction
               </span>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-4">
+            {/* Actions */}
+            <div className="flex flex-wrap items-center gap-3 pt-3">
               <NavLink
                 to="/projects"
                 onClick={() => soundManager.playPop()}
-                className="px-5 py-3 rounded-xl bg-gradient-to-r from-accent-violet to-accent-indigo hover:opacity-95 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-accent-violet/30 hover:shadow-accent-violet/50 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                className="px-5 py-3 rounded-xl bg-gradient-to-r from-accent-violet to-accent-indigo hover:opacity-95 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-accent-violet/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
-                <span>View My Projects</span>
+                <span>View Projects</span>
                 <ArrowRight className="w-4 h-4" />
               </NavLink>
 
@@ -152,7 +151,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
                 className="px-5 py-3 rounded-xl apple-glass hover:border-white/30 text-slate-200 font-medium text-sm flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
                 <FileText className="w-4 h-4 text-accent-teal" />
-                <span>Download Resume</span>
+                <span>Resume</span>
               </button>
 
               <NavLink
@@ -161,39 +160,58 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
                 className="px-4 py-3 rounded-xl bg-accent-cyan/10 hover:bg-accent-cyan/20 text-accent-cyan border border-accent-cyan/20 font-medium text-sm flex items-center gap-1.5 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
                 <Sparkles className="w-4 h-4" />
-                <span>My Story & Journey</span>
+                <span>About Me</span>
               </NavLink>
             </div>
           </motion.div>
 
-          {/* Right Column: Hero Bento & Interactive Tech Hub */}
+          {/* Right Column: Clean Interactive Hub */}
           <motion.div 
             className="lg:col-span-5 w-full"
-            initial={{ opacity: 0, x: 25, rotateY: -3 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            style={{ perspective: '1200px' }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <HeroBentoWidget />
           </motion.div>
         </div>
       </section>
 
-      {/* 2. FEATURED PROJECTS SHOWCASE */}
+      {/* 2. WHAT I DO - 3 CORE PILLARS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {PERSONAL_INFO.corePillars.map((pillar, idx) => (
+            <div
+              key={idx}
+              className="apple-glass shimmer-border rounded-3xl p-6 space-y-3"
+            >
+              <div className="text-2xl">{pillar.icon}</div>
+              <h3 className="text-lg font-bold font-display text-white">
+                {pillar.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                {pillar.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. FEATURED PROJECTS SHOWCASE */}
       <motion.section 
         className="max-w-7xl mx-auto px-4 sm:px-6 space-y-8"
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <div className="text-xs font-mono uppercase tracking-wider text-accent-cyan font-bold flex items-center gap-1.5">
-              <Layers className="w-3.5 h-3.5" /> Featured Projects
+              <Layers className="w-3.5 h-3.5" /> Featured Work
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold font-display text-white mt-1">
-              AI, Backend & CRM Systems
+              Projects & Systems
             </h2>
           </div>
           <NavLink
@@ -201,19 +219,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
             onClick={() => soundManager.playPop()}
             className="text-xs font-mono text-accent-teal hover:text-white flex items-center gap-1 group"
           >
-            <span>View All Projects</span>
+            <span>View all 5 projects</span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </NavLink>
         </div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {PROJECTS.map((project) => (
+          {PROJECTS.slice(0, 3).map((project) => (
             <motion.div
               key={project.id}
               variants={fadeUp}
@@ -245,11 +263,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
                       {tech}
                     </span>
                   ))}
-                  {project.stack.length > 4 && (
-                    <span className="px-1.5 py-0.5 rounded text-[10px] font-mono text-slate-500">
-                      +{project.stack.length - 4}
-                    </span>
-                  )}
                 </div>
 
                 <NavLink
@@ -257,7 +270,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
                   onClick={() => soundManager.playPop()}
                   className="inline-flex items-center gap-1.5 text-xs font-mono text-accent-teal group-hover:text-white transition-colors cursor-pointer"
                 >
-                  <span>View Details</span>
+                  <span>Read Case Study</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </NavLink>
               </div>
@@ -266,15 +279,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
         </motion.div>
       </motion.section>
 
-      {/* 3. CURRENT ROLE @ DATA ACES */}
+      {/* 4. CURRENT ROLE SUMMARY */}
       <motion.section 
         className="max-w-7xl mx-auto px-4 sm:px-6"
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="rounded-3xl apple-glass bg-gradient-to-r from-accent-violet/10 via-transparent to-accent-cyan/10 p-6 sm:p-8 space-y-6">
+        <div className="rounded-3xl apple-glass p-6 sm:p-8 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
             <div className="space-y-1">
               <div className="inline-flex items-center gap-2 text-xs font-mono text-emerald-400">
@@ -285,7 +298,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
                 Software Engineer @ <span className="text-gradient-violet-cyan">Data Aces</span>
               </h3>
               <p className="text-xs font-mono text-slate-400">
-                05/2025 – Present | Chennai, India
+                05/2025 – Present • Chennai, India
               </p>
             </div>
 
@@ -294,51 +307,47 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
               onClick={() => soundManager.playPop()}
               className="px-4 py-2.5 rounded-xl apple-glass hover:bg-white/15 text-xs font-mono text-white transition-all self-start sm:self-auto flex items-center gap-2 cursor-pointer"
             >
-              <span>Full Experience</span>
+              <span>View Experience Details</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </NavLink>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl glass-subtle space-y-2">
-              <div className="text-xs font-mono text-accent-cyan font-semibold flex items-center gap-1.5">
-                <Bot className="w-4 h-4" /> Agentic AI & MCP Orchestration
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-4 rounded-2xl glass-subtle space-y-2">
+              <div className="text-xs font-mono text-accent-cyan font-semibold flex items-center gap-2">
+                <Bot className="w-4 h-4" /> AI & RAG Engineering
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Building real-time conversational systems using LangGraph multi-agent workflows and Model Context Protocol (MCP) tool dispatching.
+                Building conversational search and multi-step agents with LangGraph and Model Context Protocol (MCP).
               </p>
             </div>
 
-            <div className="p-4 rounded-xl glass-subtle space-y-2">
-              <div className="text-xs font-mono text-accent-violet font-semibold flex items-center gap-1.5">
-                <Database className="w-4 h-4" /> Salesforce CRM & Pharma Data Prep
+            <div className="p-4 rounded-2xl glass-subtle space-y-2">
+              <div className="text-xs font-mono text-accent-violet font-semibold flex items-center gap-2">
+                <Database className="w-4 h-4" /> CRM Automation & Pharma Data
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Automating sales workflows with Salesforce & WhatsApp integrations, and engineering custom analytical dashboards for healthcare & pharma data.
+                Integrating Salesforce CRM with WhatsApp Business API, and transforming healthcare datasets for custom dashboards.
               </p>
             </div>
           </div>
         </div>
       </motion.section>
 
-      {/* 4. CLOSING COLLABORATION CTA */}
+      {/* 5. CONTACT CTA */}
       <motion.section 
-        className="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-6 pt-6"
-        initial={{ opacity: 0, y: 30 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-6 pt-4"
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full apple-glass text-xs font-mono text-accent-teal">
-          <Zap className="w-3.5 h-3.5" /> Let's Build Something Together
-        </div>
-
-        <h2 className="text-3xl sm:text-5xl font-bold font-display text-white tracking-tight">
-          Ready to work on your next <span className="text-gradient-violet-cyan">AI, CRM or Backend project</span>?
+        <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
+          Let's build something together.
         </h2>
 
         <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto">
-          Based in Chennai, India. Open for discussions on AI engineering, agentic systems, CRM sales automations, and backend infrastructure.
+          Have an AI application, backend system, or CRM automation project in mind? Reach out and let's chat.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
@@ -347,8 +356,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
             onClick={() => soundManager.playPop()}
             className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-accent-violet to-accent-indigo hover:opacity-95 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-accent-violet/30 transition-all cursor-pointer"
           >
-            <span>Start a Conversation</span>
-            <ArrowRight className="w-4 h-4" />
+            <Send className="w-4 h-4" />
+            <span>Get in Touch</span>
           </NavLink>
 
           <NavLink
@@ -356,8 +365,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
             onClick={() => soundManager.playPop()}
             className="px-6 py-3.5 rounded-xl apple-glass text-slate-200 font-medium text-sm flex items-center gap-2 transition-all cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-accent-cyan" />
-            <span>Explore Skills & Tools</span>
+            <Code2 className="w-4 h-4 text-accent-cyan" />
+            <span>Explore Skills</span>
           </NavLink>
         </div>
       </motion.section>

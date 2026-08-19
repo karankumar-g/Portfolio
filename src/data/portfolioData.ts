@@ -2,50 +2,49 @@ import { Project, ExperienceItem, EducationItem, SkillCategory, Certification, A
 
 export const PERSONAL_INFO = {
   name: 'Karankumar G',
-  roleTitle: 'Full Stack & AI Software Engineer',
+  roleTitle: 'Full Stack & AI Engineer',
   rolesList: [
     'Full Stack Engineer',
-    'AI & RAG Systems Builder',
-    'LangGraph & Agentic Workflows',
+    'AI & RAG Systems Developer',
     'Django & Python Specialist',
     'Salesforce & CRM Automation',
   ],
-  tagline: 'Building scalable enterprise backends, intelligent RAG pipelines, and LangGraph-driven multi-agent workflows that bridge AI with reliable software systems.',
+  tagline: 'Full Stack and AI Engineer crafting reliable web backends, generative AI workflows, and data pipelines.',
   email: 'karankumar.g0csa@gmail.com',
   phone: '+91 9345543332',
   location: 'Chennai, India',
   coordinates: '13.0827° N, 80.2707° E',
-  currentStatus: 'Currently building agentic AI systems at Data Aces',
+  currentStatus: 'Software Engineer @ Data Aces',
   currentRole: 'Software Engineer @ Data Aces',
-  experienceYears: '2+ Years in AI & Backend Engineering',
+  experienceYears: '2+ Years Experience',
   github: 'https://github.com/karankumar-g',
   githubHandle: 'karankumar-g',
   linkedin: 'https://www.linkedin.com/in/karankumar-g',
   linkedinHandle: 'in/karankumar-g',
   medium: 'https://medium.com/@karankumar.g0csa',
   mediumHandle: '@karankumar.g0csa',
-  bio: `I am a Full Stack & AI Software Engineer who focuses on the junction of enterprise backend reliability and modern agentic intelligence. My work centers on turning generative models and RAG systems from experimental prototypes into deterministic, fault-tolerant, and high-performance systems. At Data Aces, I design multi-agent workflows using LangGraph and Model Context Protocol (MCP), fine-tune domain-specific LLMs, and construct resilient ETL & data processing backends.`,
-  funFacts: [
-    { label: 'Primary Focus', value: 'Translating fuzzy LLM outputs into predictable state machines', emoji: '⚡' },
-    { label: 'Favorite Stack', value: 'Event-driven LangGraph + Redis vector caching', emoji: '🧠' },
-    { label: 'Fuel of Choice', value: 'Filter Coffee & Clean PostgreSQL Schemas', emoji: '☕' },
-    { label: 'Work Ethic', value: 'High throughput, zero fluff, clean system design', emoji: '🔥' }
+  bio: `I am a Full Stack and AI Engineer based in Chennai. I specialize in building robust Python & Django backends, conversational AI and RAG systems using LangGraph, CRM sales automations with Salesforce & WhatsApp, and data engineering pipelines.`,
+  quickHighlights: [
+    { label: 'Core Backend', value: 'Python, Django & PostgreSQL', icon: '⚡' },
+    { label: 'AI & LLMs', value: 'LangGraph, RAG & MCP Tooling', icon: '🤖' },
+    { label: 'Enterprise & CRM', value: 'Salesforce & WhatsApp API', icon: '☁️' },
+    { label: 'Data & ETL', value: 'DBT, Prefect & Cloud SDKs', icon: '📊' }
   ],
-  corePhilosophy: [
+  corePillars: [
     {
-      title: 'Deterministic AI Systems',
-      description: 'Generative models need tight boundaries. I structure multi-agent workflows with state machines (LangGraph) and MCP tool orchestration to ensure predictable, low-latency execution.',
-      emoji: '🤖'
+      title: 'Practical AI & Agents',
+      description: 'Building reliable RAG pipelines and multi-step agents with LangGraph that connect to databases and external tools.',
+      icon: '🤖'
     },
     {
-      title: 'Scalable Data & Analytics Pipelines',
-      description: 'Quality in, quality out. Robust cloud SDK ETL pipelines, clean data preparation for pharma analytics, vector indexing, and rigorous automated evaluations.',
-      emoji: '📊'
+      title: 'Scalable Backends & APIs',
+      description: 'Developing clean REST APIs, database schemas, and background tasks using Django, Python, and PostgreSQL.',
+      icon: '⚙️'
     },
     {
-      title: 'Resilient Backend Engineering',
-      description: 'Clean RESTful APIs, asynchronous message queues, containerized deployment, and resilient PostgreSQL/Redis data layers built with Django and modern Python.',
-      emoji: '🏗️'
+      title: 'Data & CRM Automation',
+      description: 'Automating sales flows with Salesforce & WhatsApp, and preparing healthcare & pharma datasets for custom dashboards.',
+      icon: '📊'
     }
   ]
 };
@@ -54,35 +53,35 @@ export const PROJECTS: Project[] = [
   {
     id: 'ace-ai',
     title: 'AceAI',
-    tagline: 'Enterprise RAG Platform & Multi-Agent Intelligence Engine',
+    tagline: 'Enterprise Document Intelligence & Conversational RAG Platform',
     category: 'AI & RAG Systems',
-    stack: ['Django', 'LLMs', 'React', 'LangGraph', 'MCP', 'Weaviate', 'MLflow', 'AWS', 'Azure'],
+    stack: ['Python', 'Django', 'React', 'LangGraph', 'Weaviate', 'MCP', 'AWS', 'Azure'],
     metrics: [
       {
-        label: 'Context Latency',
-        value: '<450ms',
-        numValue: 450,
-        suffix: 'ms',
-        description: 'Optimized multi-turn context caching and streaming token delivery'
+        label: 'Search Mode',
+        value: 'Hybrid',
+        numValue: 1,
+        suffix: '',
+        description: 'Dense vector search paired with keyword retrieval for accurate context'
       }
     ],
     bullets: [
-      'Engineered a RAG-based conversational AI platform with semantic search and document intelligence pipelines, enabling automated knowledge extraction and high-precision retrieval.',
-      'Designed a modular, multi-cloud system supporting both AWS and Azure AI services with LangGraph-based agentic workflows and MCP orchestration, enabling flexible deployment based on client infrastructure.',
-      'Integrated end-to-end evaluation workflows using MLflow to benchmark hallucination rates and semantic drift across continuous model iterations.'
+      'Built a RAG platform that enables users to upload enterprise documents and ask natural-language questions with accurate source citations.',
+      'Designed multi-agent workflows using LangGraph and Model Context Protocol (MCP) to route queries between vector search and internal tools.',
+      'Created a responsive React interface with real-time streaming answers and conversation history.'
     ],
     highlights: [
-      'Hybrid semantic dense/sparse search with Weaviate vector indexing',
-      'Cyclical multi-agent state graph routing with LangGraph',
-      'Model Context Protocol (MCP) tool integration layer',
-      'Automated quality regression benchmarks with MLflow'
+      'Hybrid semantic search with Weaviate vector database',
+      'Multi-step routing with LangGraph state graphs',
+      'Model Context Protocol (MCP) for tool execution',
+      'Multi-cloud support across AWS and Azure'
     ],
-    architectureOverview: 'Client React UI connects via WebSocket/REST to a scalable Django backend. Queries pass through a LangGraph supervisor agent that routes between document vector indices (Weaviate), MCP external tools, and fine-tuned LLM inference endpoints on AWS/Azure.',
+    architectureOverview: 'React frontend sends queries to a Django REST backend. A LangGraph workflow retrieves context from Weaviate vector collections, invokes MCP tools if needed, and streams answers back to the user.',
     flowSteps: [
-      { title: 'Ingestion & Vectorization', description: 'Enterprise documents parsed, chunked, and embedded into Weaviate with hybrid dense/sparse indexing.', tech: 'Weaviate & Custom Embeddings', badge: 'Step 01' },
-      { title: 'Agentic Routing', description: 'LangGraph state graph evaluates intent, decides tool invocation vs direct context retrieval.', tech: 'LangGraph & MCP', badge: 'Step 02' },
-      { title: 'Contextual Generation', description: 'Prompt assembly with reranked context and dynamic system instructions.', tech: 'LLMs (Azure OpenAI / AWS Bedrock)', badge: 'Step 03' },
-      { title: 'Evaluation & Logging', description: 'Automated scoring for faithfulness, relevancy, and experiment tracking.', tech: 'MLflow', badge: 'Step 04' }
+      { title: 'Document Ingestion', description: 'Parses PDFs, docs, and text into chunks and generates vector embeddings.', tech: 'Weaviate & Python', badge: '01' },
+      { title: 'Query Routing', description: 'Evaluates intent and routes between knowledge search or tool execution.', tech: 'LangGraph', badge: '02' },
+      { title: 'Response Generation', description: 'Assembles retrieved context and generates answer with source references.', tech: 'LLMs (OpenAI / Azure)', badge: '03' },
+      { title: 'User Delivery', description: 'Streams formatted responses with citations directly to the React UI.', tech: 'Django REST & WebSockets', badge: '04' }
     ],
     gradient: 'from-violet-600/20 via-indigo-600/10 to-cyan-500/20',
     featured: true
@@ -90,107 +89,107 @@ export const PROJECTS: Project[] = [
   {
     id: 'ace-etl',
     title: 'ACE-ETL',
-    tagline: 'Multi-Source Cloud SDK Ingestion & LLM-Driven DBT Orchestration',
+    tagline: 'Cloud Data Ingestion & Automated DBT Transformation Pipelines',
     category: 'Data Engineering & ETL',
-    stack: ['Django', 'LLMs', 'React', 'Cloud SDKs', 'DBT', 'Prefect', 'Azure Blob', 'AWS S3', 'PostgreSQL'],
+    stack: ['Python', 'Django', 'React', 'DBT', 'Prefect', 'Azure Blob', 'AWS S3', 'PostgreSQL'],
     metrics: [
       {
-        label: 'Automation Rate',
-        value: '92%',
-        numValue: 92,
-        suffix: '%',
-        description: 'Of DBT transformation SQL scripts auto-generated and validated by LLM'
+        label: 'Pipeline Type',
+        value: 'Automated',
+        numValue: 1,
+        suffix: '',
+        description: 'Scheduled batch extraction and schema transformation workflows'
       }
     ],
     bullets: [
-      'Built scalable multi-source ETL pipelines using custom cloud SDK-based transfers (Azure Blob, AWS S3), enabling flexible, customer-specific high-throughput data ingestion.',
-      'Implemented LLM-driven DBT SQL generation and validation with Prefect-based orchestration, improving data accuracy and execution reliability while minimizing manual intervention.',
-      'Engineered an interactive React monitoring console with real-time pipeline status, schema diffing, and automated failure recovery.'
+      'Engineered cloud data pipelines using Python SDKs to ingest data from Azure Blob Storage and AWS S3 into PostgreSQL warehouses.',
+      'Automated DBT data modeling and transformation scripts with Prefect DAG scheduling to maintain clean relational tables.',
+      'Built a React dashboard to track pipeline health, run history, and data ingestion status.'
     ],
     highlights: [
-      'High-throughput cloud SDK batch streaming across Azure Blob and AWS S3',
-      'Schema-aware LLM synthesis for DBT SQL models with dry-run assertions',
-      'Asynchronous DAG orchestration and error recovery using Prefect',
-      'Real-time pipeline observability dashboard in React'
+      'Multi-cloud data extraction using AWS & Azure SDKs',
+      'Automated DBT data modeling and SQL transformations',
+      'Prefect workflow orchestration with automated retries',
+      'Real-time pipeline monitoring dashboard in React'
     ],
-    architectureOverview: 'Prefect workflow engine coordinates custom cloud SDK batch workers, dumps raw partitions into S3/Blob, prompts LLM for schema-aware DBT transformation SQL, validates against dry-run SQL engine, and materializes into PostgreSQL/Warehouse.',
+    architectureOverview: 'Prefect orchestrates Python workers that fetch files from cloud storage, load raw tables into PostgreSQL, run DBT models for data modeling, and report status to the Django/React console.',
     flowSteps: [
-      { title: 'Multi-Source SDK Streaming', description: 'Extracts data via high-throughput cloud SDK batch streams from Azure Blob and AWS S3.', tech: 'Python SDKs & Cloud Storage', badge: 'Step 01' },
-      { title: 'Schema Introspection', description: 'Introspects source tables and generates schema contracts automatically.', tech: 'Python Introspection', badge: 'Step 02' },
-      { title: 'LLM DBT SQL Generation', description: 'Generates optimized DBT SQL models with built-in tests and sanity validations.', tech: 'LLM Prompt Chain + DBT', badge: 'Step 03' },
-      { title: 'Pipeline Orchestration', description: 'Asynchronous DAG execution with automated retries and Slack/Email alerting.', tech: 'Prefect & Celery', badge: 'Step 04' }
+      { title: 'Data Extraction', description: 'Pulls structured and semi-structured files from AWS S3 and Azure Blob.', tech: 'Cloud SDKs', badge: '01' },
+      { title: 'Staging & Schema Mapping', description: 'Stages raw records into PostgreSQL with schema validation.', tech: 'PostgreSQL & Python', badge: '02' },
+      { title: 'DBT Transformation', description: 'Runs DBT models to transform raw records into analytics-ready schemas.', tech: 'DBT & SQL', badge: '03' },
+      { title: 'Orchestration & Logs', description: 'Monitors DAG execution, logs run metrics, and alerts on failure.', tech: 'Prefect Workflows', badge: '04' }
     ],
     gradient: 'from-cyan-600/20 via-teal-600/10 to-emerald-500/20',
     featured: true
   },
   {
     id: 'sales-automation',
-    title: 'Sales Automation & WhatsApp CRM',
+    title: 'Salesforce & WhatsApp Automation',
     tagline: 'Salesforce CRM Workflows with Real-Time WhatsApp Integration',
     category: 'CRM & Enterprise Automation',
-    stack: ['Salesforce', 'WhatsApp API', 'Django', 'Python', 'Webhooks', 'REST APIs', 'PostgreSQL'],
+    stack: ['Salesforce', 'WhatsApp Cloud API', 'Django', 'Python', 'Webhooks', 'PostgreSQL'],
     metrics: [
       {
-        label: 'Workflow Automation',
-        value: '100%',
-        numValue: 100,
-        suffix: '%',
-        description: 'End-to-end automated follow-up sequences and lead status synchronization'
+        label: 'Integration',
+        value: 'Real-Time',
+        numValue: 1,
+        suffix: '',
+        description: 'Two-way synchronization between WhatsApp chats and CRM records'
       }
     ],
     bullets: [
-      'Automated sales workflows using Salesforce CRM integrated with WhatsApp for real-time customer communication and automated conversational triggers.',
-      'Streamlined lead management, automatic follow-ups, and scheduled reporting while tracking customer interactions through WhatsApp for improved sales efficiency and team performance.',
-      'Built bi-directional webhook synchronizations between WhatsApp Cloud API and Salesforce custom objects to maintain full audit logs and communication histories.'
+      'Automated sales workflows by connecting Salesforce CRM with WhatsApp Business API for instant customer communication.',
+      'Built automated lead capture, follow-up sequences, and CRM status updates whenever a customer messages.',
+      'Created custom Django webhook services to sync chat logs, message receipts, and task reminders directly into Salesforce.'
     ],
     highlights: [
-      'Seamless Salesforce CRM integration with WhatsApp Business API',
-      'Automated multi-step follow-up sequences and lead routing',
-      'Real-time conversation logging and sales telemetry dashboard',
-      'Instant notification triggers for high-priority lead events'
+      'Two-way WhatsApp Cloud API & Salesforce CRM integration',
+      'Automated lead creation and smart follow-up triggers',
+      'Real-time conversation history logged to CRM contacts',
+      'Instant notifications for sales representatives'
     ],
-    architectureOverview: 'Inbound WhatsApp webhook payloads are ingested by a high-throughput Django gateway, validated, and synchronized into Salesforce CRM objects via REST APIs. Automated Salesforce triggers schedule follow-ups and dispatch targeted WhatsApp communications.',
+    architectureOverview: 'Inbound WhatsApp webhook events hit a Django service that validates payloads, updates PostgreSQL logs, and syncs Lead/Contact records in Salesforce via REST APIs.',
     flowSteps: [
-      { title: 'Lead Ingestion & Capture', description: 'Inbound customer inquiry received via WhatsApp or web form, instantly creating Salesforce Lead records.', tech: 'WhatsApp Webhooks & Salesforce API', badge: 'Step 01' },
-      { title: 'Automated Follow-Up Flow', description: 'Triggers personalized conversational sequences and notifies sales representatives in real time.', tech: 'Salesforce Flows & Django Gateway', badge: 'Step 02' },
-      { title: 'Interaction Tracking', description: 'Full conversation transcripts and message delivery receipts logged directly to CRM contact timelines.', tech: 'PostgreSQL & Salesforce Custom Objects', badge: 'Step 03' },
-      { title: 'Reporting & Analytics', description: 'Real-time sales velocity, response rate, and conversion pipeline dashboards.', tech: 'Salesforce Dashboards & React', badge: 'Step 04' }
+      { title: 'Inbound Lead Trigger', description: 'Customer messages on WhatsApp; webhook captures phone and query.', tech: 'WhatsApp Cloud API', badge: '01' },
+      { title: 'CRM Sync', description: 'Django service creates or updates Lead record in Salesforce.', tech: 'Django & Salesforce REST', badge: '02' },
+      { title: 'Automated Follow-Up', description: 'Triggers automated response template and notifies assigned sales rep.', tech: 'Salesforce Flows', badge: '03' },
+      { title: 'Activity Logging', description: 'Logs full interaction timestamps and receipts to contact history.', tech: 'PostgreSQL & CRM Objects', badge: '04' }
     ],
     gradient: 'from-emerald-600/20 via-teal-600/10 to-cyan-500/20',
     featured: true
   },
   {
     id: 'pharma-analytics',
-    title: 'Pharma Data Prep & Analytics Dashboards',
-    tagline: 'Healthcare Analytics for HCP, Patient Journey & Brand Performance',
+    title: 'Pharma Data Prep & Analytics',
+    tagline: 'Healthcare Analytics for HCPs, Patient Journeys & Brand Performance',
     category: 'Pharma Analytics & Data Engineering',
-    stack: ['Python', 'SQL', 'DBT', 'Prefect', 'PostgreSQL', 'React', 'Tableau', 'AWS S3'],
+    stack: ['Python', 'SQL', 'DBT', 'Prefect', 'PostgreSQL', 'React', 'Tableau'],
     metrics: [
       {
-        label: 'Analytics Coverage',
-        value: 'Multi-Brand',
-        numValue: 100,
+        label: 'Domain',
+        value: 'Healthcare',
+        numValue: 1,
         suffix: '',
-        description: 'Comprehensive reporting across HCP engagement, patient drop-offs, and market trends'
+        description: 'Structured reporting across HCP prescribing, patient stages, and brand metrics'
       }
     ],
     bullets: [
-      'Specialized in pharmaceutical data processing, managing rigorous data preparation pipelines and constructing custom multi-dimensional analytical dashboards.',
-      'Designed domain-specific dashboards focusing on Healthcare Professional (HCP) prescribing trends, Patient longitudinal journeys, and Brand performance KPIs.',
-      'Built scalable data transformation layers using SQL and DBT orchestrated with Prefect, ensuring clinical-grade data accuracy and automated compliance reporting.'
+      'Prepared and transformed healthcare and pharmaceutical datasets into structured analytics tables using SQL and DBT.',
+      'Built custom interactive dashboards to track Healthcare Professional (HCP) prescribing trends, Patient treatment journeys, and Brand performance.',
+      'Orchestrated automated data quality checks and aggregation pipelines with Prefect.'
     ],
     highlights: [
-      'Comprehensive data preparation and cleansing for complex healthcare & pharma datasets',
-      'Specialized dashboards for HCP engagement, Patient treatment journeys, and Brand analytics',
-      'Automated data transformation pipelines and cohort aggregations with DBT & Prefect',
-      'Interactive executive and field-level visual reporting consoles'
+      'Data preparation and cleaning for pharmaceutical datasets',
+      'Dedicated dashboards for HCP trends, Patient journey drop-offs, and Brand KPIs',
+      'Automated SQL data modeling with DBT and Prefect',
+      'Clear visual reporting built with React and Tableau'
     ],
-    architectureOverview: 'Raw pharmaceutical datasets stored in S3/cloud storage are ingested and transformed through DBT models with Prefect DAG orchestration into partitioned analytical schemas in PostgreSQL/Warehouse, feeding responsive custom React and Tableau reporting dashboards.',
+    architectureOverview: 'Pharmaceutical data is ingested and cleansed through DBT models in PostgreSQL. Aggregate metrics feed custom React dashboards and Tableau reports for business decision-makers.',
     flowSteps: [
-      { title: 'Data Ingestion & Staging', description: 'Ingests multi-source pharma feeds, prescription data, and HCP rosters into cloud staging partitions.', tech: 'Python SDKs & AWS S3', badge: 'Step 01' },
-      { title: 'Data Prep & Transformation', description: 'Cleanses, anonymizes, and models data into HCP, Patient, and Brand analytical schemas.', tech: 'DBT & SQL Models', badge: 'Step 02' },
-      { title: 'Orchestration & Validation', description: 'Automated DAG execution with built-in data quality assertions and discrepancy alerts.', tech: 'Prefect Workflows', badge: 'Step 03' },
-      { title: 'Interactive Dashboards', description: 'Visualizes HCP prescribing patterns, patient journey stages, and brand market share.', tech: 'React & Tableau BI', badge: 'Step 04' }
+      { title: 'Data Cleaning & Prep', description: 'Cleanses raw pharma data, normalizes codes, and handles missing records.', tech: 'Python & SQL', badge: '01' },
+      { title: 'Cohort Modeling', description: 'Transforms patient journeys and HCP prescribing activity into analytical schemas.', tech: 'DBT Models', badge: '02' },
+      { title: 'Pipeline Scheduling', description: 'Schedules recurring data refreshes with automated validation checks.', tech: 'Prefect', badge: '03' },
+      { title: 'Dashboard Presentation', description: 'Renders intuitive visual summaries for brand and field teams.', tech: 'React & Tableau', badge: '04' }
     ],
     gradient: 'from-cyan-600/20 via-teal-600/10 to-emerald-500/20',
     featured: true
@@ -198,35 +197,35 @@ export const PROJECTS: Project[] = [
   {
     id: 'proctor-point',
     title: 'Proctor Point',
-    tagline: 'Computer Vision AI Proctoring & Secure Assessment Platform',
+    tagline: 'Computer Vision AI Proctoring & Secure Exam Management',
     category: 'Computer Vision & Security',
-    stack: ['Django', 'React', 'Computer Vision', 'YOLOv8', 'Face Recognition', 'OpenCV', 'WebSockets', 'PostgreSQL'],
+    stack: ['Python', 'Django', 'React', 'YOLOv8', 'OpenCV', 'Face Recognition', 'WebSockets', 'PostgreSQL'],
     metrics: [
       {
-        label: 'Concurrent Streams',
-        value: '500+',
-        numValue: 500,
-        suffix: '+',
-        description: 'Simultaneous low-latency video streams monitored without frame drops'
+        label: 'Detection',
+        value: 'Real-Time',
+        numValue: 1,
+        suffix: '',
+        description: 'Live video stream analysis for unauthorized items and face verification'
       }
     ],
     bullets: [
-      'Developed a full-scale AI proctoring system using face recognition and YOLO-based detection, enabling real-time monitoring and accurate identification of unauthorized activities.',
-      'Engineered a secure, scalable exam management platform with role-based access control (RBAC), automated scheduling, and instant anomaly notifications, supporting reliable concurrent assessments.',
-      'Integrated client-side lightweight frame sampling with backend GPU inference clustering to maintain 30 FPS telemetry with minimal network overhead.'
+      'Developed an online exam proctoring platform with real-time facial verification and prohibited object detection.',
+      'Trained and integrated YOLOv8 models to detect mobile phones, notes, and multiple people in webcam feeds.',
+      'Built a live proctor monitoring dashboard using WebSockets and Django Channels for real-time infraction alerts.'
     ],
     highlights: [
-      'Real-time YOLOv8 object detection for prohibited devices (phones, tablets, books)',
-      'Facial recognition and gaze trajectory tracking using OpenCV & FaceNet',
-      'High-throughput WebSocket streaming with Django Channels',
-      'Role-based exam administration with instant anomaly flags'
+      'YOLOv8 object detection for unauthorized devices',
+      'Facial verification and head pose estimation using OpenCV',
+      'Real-time WebSocket alerts with Django Channels',
+      'Role-based exam administration and incident logs'
     ],
-    architectureOverview: 'WebRTC video streams sent from student React clients are sampled and processed by a YOLOv8 and FaceNet inference pipeline. Real-time flags and infractions are pushed via Django Channels/WebSockets to proctor dashboards.',
+    architectureOverview: 'Webcam video frames from student React clients are analyzed by a backend OpenCV/YOLOv8 pipeline. Detected infractions trigger instant alerts on proctor supervisor screens via WebSockets.',
     flowSteps: [
-      { title: 'Identity Verification', description: 'Pre-exam biometric facial embedding match against registered identity.', tech: 'FaceNet & OpenCV', badge: 'Step 01' },
-      { title: 'Real-time YOLO Detection', description: 'Detects prohibited objects (phones, notes, multiple persons in frame).', tech: 'YOLOv8 & PyTorch', badge: 'Step 02' },
-      { title: 'Gaze & Head Pose Tracking', description: 'Calculates yaw, pitch, roll angles to detect sustained off-screen attention.', tech: 'MediaPipe / OpenCV', badge: 'Step 03' },
-      { title: 'Audit Trail & Incident Log', description: 'Timestamped video snippets and confidence scores logged in PostgreSQL.', tech: 'Django REST & WebSockets', badge: 'Step 04' }
+      { title: 'Face Verification', description: 'Verifies student identity against registered photo before exam begins.', tech: 'OpenCV & FaceNet', badge: '01' },
+      { title: 'Live Object Detection', description: 'Scans webcam stream for prohibited items like phones or secondary persons.', tech: 'YOLOv8', badge: '02' },
+      { title: 'Gaze & Pose Check', description: 'Flags prolonged attention away from the screen.', tech: 'OpenCV & MediaPipe', badge: '03' },
+      { title: 'Proctor Alerting', description: 'Pushes timestamped incident clips directly to the proctor dashboard.', tech: 'Django WebSockets', badge: '04' }
     ],
     gradient: 'from-amber-600/20 via-rose-600/10 to-violet-500/20',
     featured: true
@@ -240,44 +239,39 @@ export const EXPERIENCES: ExperienceItem[] = [
     company: 'Data Aces',
     location: 'Chennai, India',
     period: '05/2025 – Present',
-    statusChip: '🟢 Active Role',
-    summary: 'Driving backend engineering, AI system design, CRM sales automation, and specialized pharma data pipelines across enterprise client platforms. Specializing in RAG pipelines, LangGraph-based agentic workflows, Salesforce integrations, and scalable analytical infrastructure.',
+    statusChip: 'Current Role',
+    summary: 'Developing backend systems, conversational AI applications, and enterprise data solutions.',
     responsibilities: [
       {
-        point: 'Built scalable backend systems and RESTful APIs for AI-driven applications, integrating RAG pipelines, LLM fine-tuning, and automated evaluation workflows to ensure high response quality and system performance.',
-        tags: ['Django REST', 'RAG', 'MLflow', 'Fine-tuning', 'PostgreSQL'],
-        impactMetric: 'High-Precision Context Retrieval'
+        point: 'Building backend APIs and RAG pipelines in Django and Python to enable fast semantic search and document question-answering.',
+        tags: ['Django', 'Python', 'RAG', 'PostgreSQL']
       },
       {
-        point: 'Built real-time conversational AI systems with LangGraph-based agentic workflows and Model Context Protocol (MCP) tool orchestration, enabling multi-turn interactions, dynamic reasoning, and low-latency user experiences.',
-        tags: ['LangGraph', 'MCP', 'Agentic AI', 'WebSockets', 'Redis', 'Python'],
-        impactMetric: '<450ms Multi-Turn Latency'
+        point: 'Developing conversational AI systems using LangGraph multi-agent workflows and Model Context Protocol (MCP) for tool integrations.',
+        tags: ['LangGraph', 'MCP', 'Agentic AI', 'Weaviate']
       },
       {
-        point: 'Built scalable cloud SDK ETL pipelines and DBT transformations (Azure Blob, AWS S3, PostgreSQL) orchestrated by Prefect for high-throughput batch and stream ingestion.',
-        tags: ['Cloud SDKs', 'DBT', 'Prefect', 'PostgreSQL', 'Python'],
-        impactMetric: 'Automated Ingestion Pipelines'
+        point: 'Creating data ingestion and transformation pipelines using Python cloud SDKs (AWS/Azure) and DBT scheduled with Prefect.',
+        tags: ['DBT', 'Prefect', 'Cloud SDKs', 'PostgreSQL']
       },
       {
-        point: 'Implemented Sales Automation workflows using Salesforce CRM integrated with WhatsApp for real-time customer communication, streamlined lead management, and automated follow-up reporting.',
-        tags: ['Salesforce', 'WhatsApp API', 'Webhooks', 'CRM Automation', 'Python'],
-        impactMetric: 'Automated Lead & Follow-Up Sync'
+        point: 'Implementing Salesforce CRM workflows integrated with WhatsApp Business API for real-time customer communication and automated lead tracking.',
+        tags: ['Salesforce', 'WhatsApp API', 'CRM Automation']
       },
       {
-        point: 'Specialized in pharma data preparation and custom dashboard creation focusing on Healthcare Professionals (HCP), Patient treatment journeys, and Brand analytics.',
-        tags: ['Pharma Analytics', 'DBT', 'Prefect', 'SQL', 'Tableau / React Dashboards'],
-        impactMetric: 'Multi-Brand Health Insights'
+        point: 'Preparing pharmaceutical datasets and building custom analytical dashboards for HCP, patient journey, and brand metrics.',
+        tags: ['Pharma Analytics', 'SQL', 'React', 'Tableau']
       }
     ],
     techStack: [
       'Python', 'Django', 'Django REST Framework', 'LangGraph', 'MCP', 
-      'RAG', 'MLflow', 'Salesforce', 'WhatsApp API', 'PostgreSQL', 'Redis', 'Weaviate', 'DBT', 'Prefect', 'AWS', 'Azure'
+      'RAG', 'Salesforce', 'WhatsApp API', 'PostgreSQL', 'Redis', 'Weaviate', 'DBT', 'Prefect', 'AWS', 'Azure'
     ],
     keyWins: [
-      'Engineered enterprise RAG platform adopted across multi-tenant clients',
-      'Built automated Salesforce CRM & WhatsApp real-time sales communication integration',
-      'Architected cloud SDK ETL pipelines and DBT data modeling workflows',
-      'Developed specialized pharma analytics dashboards for HCP and patient journey intelligence'
+      'Built production RAG platform with LangGraph agentic tool execution',
+      'Automated sales workflows integrating Salesforce CRM with WhatsApp',
+      'Engineered cloud SDK data pipelines and DBT transformation models',
+      'Delivered pharma data preparation dashboards for HCP and patient analytics'
     ]
   }
 ];
@@ -288,33 +282,32 @@ export const EDUCATION: EducationItem[] = [
     degree: 'Master of Computer Applications (MCA)',
     institution: 'Dwaraka Doss Goverdhan Doss Vaishnav College',
     location: 'Chennai, India',
-    period: '06/2023 – 04/2025',
+    period: '2023 – 2025',
     score: 'Distinction',
-    scoreLabel: 'Degree: MCA (Distinction)',
-    highlight: 'Distinction / High Standing',
+    scoreLabel: 'Postgraduate Distinction',
+    highlight: 'Distinction',
     coursework: [
-      'Advanced Data Structures & Algorithms',
-      'Distributed Systems & Cloud Computing',
-      'Machine Learning & Artificial Intelligence',
-      'Advanced Database Management Systems (PostgreSQL, NoSQL)',
-      'Enterprise Application with Python & React'
+      'Data Structures & Algorithms',
+      'Database Management Systems',
+      'Distributed Systems & Cloud',
+      'Machine Learning & Applied AI',
+      'Full Stack Web Development'
     ]
   },
   {
     id: 'bsc-cs',
-    degree: 'Bachelor of Science in Computer Science (B.Sc CS)',
+    degree: 'B.Sc in Computer Science',
     institution: 'Thiruthangal Nadar College',
     location: 'Chennai, India',
-    period: '04/2020 – 04/2023',
+    period: '2020 – 2023',
     score: 'First Class',
-    scoreLabel: 'Degree: B.Sc CS (First Class with Distinction)',
+    scoreLabel: 'First Class with Distinction',
     highlight: 'First Class with Distinction',
     coursework: [
-      'Object Oriented Programming (Python, Java, C++)',
-      'Relational Database Systems (SQL)',
-      'Computer Networks & Web Technologies',
-      'Operating Systems & Linux Systems Programming',
-      'Software Engineering Methodologies'
+      'Object Oriented Programming (Python, C++)',
+      'Relational Databases & SQL',
+      'Computer Networks & Web Basics',
+      'Operating Systems & Linux'
     ]
   }
 ];
@@ -322,67 +315,55 @@ export const EDUCATION: EducationItem[] = [
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     category: 'Languages',
-    description: 'Core programming languages for backend logic, data transformation, and frontend',
+    description: 'Core programming languages',
     skills: [
-      { name: 'Python', level: 'Expert', highlight: true, description: 'Backend services, AI pipelines, async programming', percentage: 95 },
-      { name: 'JavaScript', level: 'Expert', description: 'Modern ES6+, DOM manipulation, event loops', percentage: 90 },
-      { name: 'TypeScript', level: 'Advanced', highlight: true, description: 'Type-safe frontend and Node tool integrations', percentage: 88 },
-      { name: 'SQL', level: 'Expert', highlight: true, description: 'Complex joins, window functions, indexing', percentage: 92 }
+      { name: 'Python', level: 'Expert', highlight: true, description: 'Backend APIs, AI pipelines, scripts', percentage: 95 },
+      { name: 'JavaScript', level: 'Advanced', description: 'Frontend interfaces, modern ES6+', percentage: 90 },
+      { name: 'TypeScript', level: 'Advanced', highlight: true, description: 'Type-safe web apps & integrations', percentage: 88 },
+      { name: 'SQL', level: 'Expert', highlight: true, description: 'Queries, joins, indexing, data modeling', percentage: 92 }
     ]
   },
   {
     category: 'Frameworks & Web',
-    description: 'Web frameworks and frontend component libraries',
+    description: 'Web development and API frameworks',
     skills: [
-      { name: 'Django', level: 'Expert', highlight: true, description: 'ORM, auth, middleware, scalable services', percentage: 94 },
-      { name: 'Django REST Framework', level: 'Expert', highlight: true, description: 'High-throughput RESTful APIs, serializers', percentage: 95 },
-      { name: 'React', level: 'Advanced', highlight: true, description: 'Hooks, state management, real-time UIs', percentage: 88 },
-      { name: 'Flask', level: 'Advanced', description: 'Lightweight microservices, inference APIs', percentage: 85 }
+      { name: 'Django', level: 'Expert', highlight: true, description: 'ORM, authentication, scalable APIs', percentage: 94 },
+      { name: 'Django REST Framework', level: 'Expert', highlight: true, description: 'High-performance REST APIs & serializers', percentage: 95 },
+      { name: 'React', level: 'Advanced', highlight: true, description: 'Interactive web UIs & dashboard consoles', percentage: 88 },
+      { name: 'Flask', level: 'Advanced', description: 'Lightweight microservices & endpoints', percentage: 85 }
     ]
   },
   {
     category: 'AI & Agentic Systems',
-    description: 'Agentic workflows, RAG, LLM fine-tuning, and evaluation',
+    description: 'LLM agents, RAG, and tool orchestration',
     skills: [
-      { name: 'LangGraph', level: 'Expert', highlight: true, description: 'Multi-agent state machines, supervisor flows', percentage: 94 },
-      { name: 'RAG Systems', level: 'Expert', highlight: true, description: 'Dense/sparse hybrid retrieval, re-ranking', percentage: 96 },
-      { name: 'MCP (Model Context Protocol)', level: 'Expert', highlight: true, description: 'Standardized tool and context orchestration', percentage: 92 },
-      { name: 'LLM Fine-tuning', level: 'Advanced', description: 'LoRA/QLoRA domain adaptation, prompt alignment', percentage: 85 },
-      { name: 'MLflow', level: 'Advanced', description: 'Experiment tracking, model registry', percentage: 88 },
-      { name: 'AI Evaluation & Benchmarking', level: 'Advanced', description: 'Faithfulness, relevancy, hallucination metrics', percentage: 89 }
+      { name: 'LangGraph', level: 'Expert', highlight: true, description: 'Multi-agent routing & workflows', percentage: 94 },
+      { name: 'RAG Systems', level: 'Expert', highlight: true, description: 'Document retrieval & semantic search', percentage: 96 },
+      { name: 'MCP (Model Context Protocol)', level: 'Expert', highlight: true, description: 'Standardized tool integration', percentage: 92 },
+      { name: 'Weaviate', level: 'Advanced', highlight: true, description: 'Vector indexing & hybrid search', percentage: 90 },
+      { name: 'MLflow', level: 'Advanced', description: 'Experiment tracking & model logging', percentage: 88 }
     ]
   },
   {
-    category: 'Databases & Vector Stores',
-    description: 'Relational, NoSQL, in-memory caching, and vector engines',
+    category: 'Databases & Cloud',
+    description: 'Data storage, cloud SDKs, and pipelines',
     skills: [
-      { name: 'PostgreSQL', level: 'Expert', highlight: true, description: 'ACID, pgvector, query optimization', percentage: 92 },
-      { name: 'Weaviate', level: 'Advanced', highlight: true, description: 'Vector DB, hybrid search, multi-tenant', percentage: 90 },
-      { name: 'Redis', level: 'Advanced', highlight: true, description: 'Caching, session store, pub/sub', percentage: 88 },
-      { name: 'MongoDB', level: 'Proficient', description: 'Document stores, aggregation pipelines', percentage: 82 },
-      { name: 'Cassandra', level: 'Proficient', description: 'Distributed columnar database', percentage: 80 }
-    ]
-  },
-  {
-    category: 'Tools & Orchestration',
-    description: 'Workflow orchestrators, cloud SDKs, data prep tools, testing, and cloud',
-    skills: [
-      { name: 'Prefect', level: 'Advanced', highlight: true, description: 'Modern workflow orchestration, DAGs', percentage: 90 },
-      { name: 'DBT', level: 'Advanced', highlight: true, description: 'Data modeling, transformation, data prep', percentage: 90 },
-      { name: 'Cloud SDKs (AWS/Azure)', level: 'Expert', highlight: true, description: 'Direct cloud storage transfer & batch pipelines', percentage: 92 },
-      { name: 'Git & GitHub', level: 'Expert', description: 'Branching, GitHub Actions CI/CD', percentage: 95 },
-      { name: 'Playwright', level: 'Advanced', description: 'Browser automation, E2E testing', percentage: 86 },
-      { name: 'N8N Automation', level: 'Advanced', description: 'Node-based workflows and webhooks', percentage: 85 },
-      { name: 'Docker / Cloud (AWS/Azure)', level: 'Proficient', description: 'Containerization, serverless compute', percentage: 84 }
+      { name: 'PostgreSQL', level: 'Expert', highlight: true, description: 'Relational data modeling & optimization', percentage: 92 },
+      { name: 'Redis', level: 'Advanced', highlight: true, description: 'In-memory caching & session store', percentage: 88 },
+      { name: 'MongoDB', level: 'Proficient', description: 'Document storage & collections', percentage: 82 },
+      { name: 'DBT', level: 'Advanced', highlight: true, description: 'SQL data transformations & modeling', percentage: 90 },
+      { name: 'Prefect', level: 'Advanced', highlight: true, description: 'DAG workflow scheduling', percentage: 90 },
+      { name: 'AWS & Azure', level: 'Proficient', description: 'Cloud storage SDKs & compute', percentage: 84 },
+      { name: 'Git & GitHub', level: 'Expert', description: 'Version control & repository management', percentage: 95 }
     ]
   },
   {
     category: 'CRM & Enterprise',
-    description: 'Salesforce CRM, WhatsApp sales automation, and enterprise platforms',
+    description: 'Salesforce CRM and messaging automations',
     skills: [
-      { name: 'Salesforce CRM & Automation', level: 'Expert', highlight: true, description: 'Workflows, custom objects, lead management', percentage: 94 },
-      { name: 'WhatsApp Business API', level: 'Expert', highlight: true, description: 'Real-time customer communication & webhook bots', percentage: 92 },
-      { name: 'Salesforce Agentforce', level: 'Advanced', highlight: true, description: 'Autonomous enterprise AI agents', percentage: 90 }
+      { name: 'Salesforce CRM & Automation', level: 'Expert', highlight: true, description: 'Workflows, objects & lead tracking', percentage: 94 },
+      { name: 'WhatsApp Business API', level: 'Expert', highlight: true, description: 'Webhook messaging & automated replies', percentage: 92 },
+      { name: 'Salesforce Agentforce', level: 'Advanced', highlight: true, description: 'Certified Agentforce Specialist', percentage: 90 }
     ]
   }
 ];
@@ -393,94 +374,93 @@ export const CERTIFICATIONS: Certification[] = [
     title: 'Salesforce Certified Agentforce Specialist',
     issuer: 'Salesforce',
     badgeType: 'Agentforce',
-    skillsLearned: ['Autonomous AI Agents', 'Prompt Builder', 'Action Triggers', 'Enterprise CRM']
-  },
-  {
-    id: 'nptel-python',
-    title: 'The Joy of Computing using Python',
-    issuer: 'NPTEL',
-    badgeType: 'Python',
-    skillsLearned: ['Data Structures', 'Algorithmic Thinking', 'Recursion', 'Problem Solving']
-  },
-  {
-    id: 'postman-expert',
-    title: 'Postman API Fundamentals Student Expert',
-    issuer: 'Postman',
-    badgeType: 'API',
-    skillsLearned: ['REST APIs', 'Request Chaining', 'Automated Tests', 'API Docs']
-  },
-  {
-    id: 'spoken-tutorial-python',
-    title: 'Python – Spoken Tutorial',
-    issuer: 'IIT Bombay',
-    badgeType: 'Python',
-    skillsLearned: ['Core Syntax', 'File I/O', 'OOP', 'Standard Libraries']
+    skillsLearned: ['Agentforce Agents', 'Prompt Builder', 'CRM Actions']
   },
   {
     id: 'meta-django',
     title: 'Django Web Framework',
     issuer: 'Meta',
     badgeType: 'Meta',
-    skillsLearned: ['Django Architecture', 'ORM Models', 'Views', 'Authentication']
+    skillsLearned: ['Django Architecture', 'ORM Models', 'Views & Auth']
   },
   {
     id: 'meta-apis',
     title: 'APIs & Backend Development',
     issuer: 'Meta',
     badgeType: 'Meta',
-    skillsLearned: ['DRF Serializers', 'Pagination', 'Auth Tokens', 'API Security']
+    skillsLearned: ['REST APIs', 'DRF Serializers', 'Authentication']
+  },
+  {
+    id: 'postman-expert',
+    title: 'Postman API Fundamentals Student Expert',
+    issuer: 'Postman',
+    badgeType: 'API',
+    skillsLearned: ['API Testing', 'Chaining Requests', 'API Documentation']
+  },
+  {
+    id: 'nptel-python',
+    title: 'The Joy of Computing using Python',
+    issuer: 'NPTEL',
+    badgeType: 'Python',
+    skillsLearned: ['Algorithms', 'Data Structures', 'Problem Solving']
+  },
+  {
+    id: 'spoken-tutorial-python',
+    title: 'Python Programming',
+    issuer: 'IIT Bombay',
+    badgeType: 'Python',
+    skillsLearned: ['Core Python', 'File Handling', 'OOP Concepts']
   },
   {
     id: 'hackerrank-sql',
-    title: 'SQL (Advanced / Intermediate)',
+    title: 'SQL (Advanced & Intermediate)',
     issuer: 'HackerRank',
     badgeType: 'Data',
-    skillsLearned: ['Subqueries', 'Window Functions', 'Indexing', 'Grouping Sets']
+    skillsLearned: ['Complex Joins', 'Subqueries', 'Window Functions']
   },
   {
     id: 'tableau-bi',
     title: 'Tableau for Business Intelligence',
     issuer: 'BI Academy',
     badgeType: 'Data',
-    skillsLearned: ['Visualization', 'Dashboards', 'Calculated Fields', 'Trends']
+    skillsLearned: ['Visual Dashboards', 'Calculated Fields', 'Reporting']
   }
 ];
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
     id: 'academic-excellence',
-    title: 'Academic Distinction in Computing Systems',
+    title: 'Academic Distinction in Computer Science',
     organization: 'Thiruthangal Nadar College, Chennai',
     period: 'B.Sc Computer Science',
-    description: 'Consistently achieved distinction and top standing across core computing subjects including Data Structures, Algorithms, and Database Management Systems.',
-    badgeText: 'Distinction Standing',
-    highlightNumber: '95%'
+    description: 'Awarded First Class with Distinction across core computing coursework including Algorithms, Database Systems, and Programming.',
+    badgeText: 'First Class with Distinction'
   }
 ];
 
 export const TIMELINE_JOURNEY = [
   {
     year: '2020 – 2023',
-    title: 'Foundations & Core Computer Science',
-    institution: 'Thiruthangal Nadar College (B.Sc Computer Science)',
+    title: 'B.Sc Computer Science',
+    institution: 'Thiruthangal Nadar College, Chennai',
     badge: 'First Class with Distinction',
-    narrative: 'Began my formal computing journey with a rigorous foundation in algorithms, data structures, and relational databases while building early Python and web prototypes.',
+    narrative: 'Built a strong foundation in core computer science, algorithms, database design, and object-oriented programming with Python and SQL.',
     accentColor: '#F59E0B'
   },
   {
     year: '2023 – 2025',
-    title: 'Master of Computer Applications & Applied AI',
-    institution: 'Dwaraka Doss Goverdhan Doss Vaishnav College (MCA)',
+    title: 'Master of Computer Applications (MCA)',
+    institution: 'DG Vaishnav College, Chennai',
     badge: 'Postgraduate Distinction',
-    narrative: 'Advanced into distributed systems, enterprise backend engineering, and applied AI. Built full-stack Django/React applications, AI proctoring systems with Computer Vision, and multi-source ETL pipelines.',
+    narrative: 'Expanded into distributed backend architecture, AI proctoring systems with Computer Vision, and full-stack web applications.',
     accentColor: '#22D3EE'
   },
   {
     year: '05/2025 – Present',
-    title: 'Software Engineer @ Data Aces',
+    title: 'Software Engineer',
     institution: 'Data Aces, Chennai',
-    badge: 'Enterprise AI, CRM & Backend Systems',
-    narrative: 'Building high-throughput RAG platforms, Salesforce WhatsApp sales automation, cloud SDK ETL pipelines, LangGraph-driven multi-agent systems, and specialized pharma data preparation dashboards for enterprise clients.',
+    badge: 'Current Role',
+    narrative: 'Building production RAG platforms, LangGraph agent workflows, Salesforce WhatsApp integrations, and specialized healthcare data pipelines.',
     accentColor: '#7C3AED'
   }
 ];
