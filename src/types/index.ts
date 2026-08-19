@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   tagline: string;
-  category: 'AI & RAG Systems' | 'Data Engineering & ETL' | 'Computer Vision & Security';
+  category: 'AI & RAG Systems' | 'CRM & Enterprise Automation' | 'Pharma Analytics & Data Engineering' | 'Data Engineering & ETL' | 'Computer Vision & Security' | string;
   stack: string[];
   metrics: {
     label: string;
