@@ -21,7 +21,7 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ darkMode }) => {
       0.1,
       1000
     );
-    camera.position.set(0, 0, 24);
+    camera.position.set(0, 0, 30);
 
     // 2. WebGL Renderer
     const renderer = new THREE.WebGLRenderer({
@@ -33,47 +33,24 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ darkMode }) => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // 3. Subtle Ambient Orbital Geometry (Soft depth background)
-    const geom = new THREE.IcosahedronGeometry(12, 1);
-    const wireMat = new THREE.MeshBasicMaterial({
-      color: darkMode ? 0x7c3aed : 0x6d28d9,
-      wireframe: true,
-      transparent: true,
-      opacity: darkMode ? 0.035 : 0.02,
-    });
-    const icosahedron = new THREE.Mesh(geom, wireMat);
-    icosahedron.position.set(10, -3, -14);
-    scene.add(icosahedron);
-
-    // Soft decorative ring
-    const ringGeom = new THREE.TorusGeometry(16, 0.04, 16, 80);
-    const ringMat = new THREE.MeshBasicMaterial({
-      color: darkMode ? 0x22d3ee : 0x0891b2,
-      transparent: true,
-      opacity: darkMode ? 0.04 : 0.02,
-    });
-    const orbitalRing = new THREE.Mesh(ringGeom, ringMat);
-    orbitalRing.rotation.x = Math.PI / 3.5;
-    icosahedron.add(orbitalRing);
-
-    // 4. Subtle Floating Starfield Particles
-    const particleCount = 120;
+    // 3. Subtle, Premium Floating Ambient Particles (NO messy wireframes)
+    const particleCount = 90;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = new THREE.Color(darkMode ? 0x7c3aed : 0x6d28d9); // Violet
-    const color2 = new THREE.Color(darkMode ? 0x22d3ee : 0x0891b2); // Cyan
+    const color1 = new THREE.Color(darkMode ? 0x8b5cf6 : 0x6366f1); // Violet
+    const color2 = new THREE.Color(darkMode ? 0x06b6d4 : 0x0ea5e9); // Cyan
 
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
-      positions[i3] = (Math.random() - 0.5) * 60;
+      positions[i3] = (Math.random() - 0.5) * 70;
       positions[i3 + 1] = (Math.random() - 0.5) * 50;
       positions[i3 + 2] = (Math.random() - 0.5) * 30;
 
-      const mixedColor = i % 2 === 0 ? color1 : color2;
-      colors[i3] = mixedColor.r;
-      colors[i3 + 1] = mixedColor.g;
-      colors[i3 + 2] = mixedColor.b;
+      const chosenColor = i % 2 === 0 ? color1 : color2;
+      colors[i3] = chosenColor.r;
+      colors[i3 + 1] = chosenColor.g;
+      colors[i3 + 2] = chosenColor.b;
     }
 
     const particleGeom = new THREE.BufferGeometry();
@@ -81,33 +58,25 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ darkMode }) => {
     particleGeom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const particleMat = new THREE.PointsMaterial({
-      size: 0.12,
+      size: 0.14,
       vertexColors: true,
       transparent: true,
-      opacity: darkMode ? 0.55 : 0.35,
+      opacity: darkMode ? 0.45 : 0.25,
       blending: THREE.AdditiveBlending,
     });
 
     const particles = new THREE.Points(particleGeom, particleMat);
     scene.add(particles);
 
-    // 5. Gentle Continuous Animations
-    const rotAnim = animate(icosahedron.rotation, {
-      y: Math.PI * 2,
-      x: Math.PI * 2,
-      duration: 60000,
-      ease: 'linear',
-      loop: true,
-    });
-
+    // 4. Slow Ambient Drift Animation
     const particleRotAnim = animate(particles.rotation, {
       y: Math.PI * 2,
-      duration: 90000,
+      duration: 120000,
       ease: 'linear',
       loop: true,
     });
 
-    // 6. Smooth Mouse Parallax
+    // 5. Gentle Cursor Parallax
     const mousePos = { x: 0, y: 0 };
     const handleMouseMove = (e: MouseEvent) => {
       const normalizedX = (e.clientX / window.innerWidth - 0.5) * 2;
@@ -116,11 +85,11 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ darkMode }) => {
       animate(mousePos, {
         x: normalizedX,
         y: normalizedY,
-        duration: 900,
+        duration: 1000,
         ease: 'outQuad',
         onUpdate: () => {
-          camera.position.x = mousePos.x * 1.2;
-          camera.position.y = -mousePos.y * 0.8;
+          camera.position.x = mousePos.x * 1.5;
+          camera.position.y = -mousePos.y * 1.0;
           camera.lookAt(scene.position);
         }
       });
@@ -135,7 +104,7 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ darkMode }) => {
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('resize', handleResize);
 
-    // 7. Render Loop
+    // 6. Render Loop
     let animationId: number;
     const render = () => {
       animationId = requestAnimationFrame(render);
@@ -143,24 +112,19 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ darkMode }) => {
     };
     render();
 
-    // 8. Cleanup
+    // 7. Cleanup
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
 
       try {
-        rotAnim?.pause?.();
         particleRotAnim?.pause?.();
       } catch {}
 
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
-      geom.dispose();
-      wireMat.dispose();
-      ringGeom.dispose();
-      ringMat.dispose();
       particleGeom.dispose();
       particleMat.dispose();
       renderer.dispose();

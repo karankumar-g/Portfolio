@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
@@ -10,19 +10,16 @@ import {
   Sparkles, 
   Award, 
   ChevronRight,
-  Code2,
-  Bot,
-  Database,
-  Cloud,
   Send,
   Copy,
   Check,
-  Globe,
-  CheckCircle2
+  GraduationCap,
+  Sparkle
 } from 'lucide-react';
-import { PERSONAL_INFO, PROJECTS, CERTIFICATIONS, EDUCATION } from '../data/portfolioData';
-import { SystemsPreviewCanvas } from '../components/SystemsPreviewCanvas';
+import { PERSONAL_INFO, PROJECTS } from '../data/portfolioData';
+import { InteractiveGlobe } from '../components/InteractiveGlobe';
 import { soundManager } from '../utils/soundEffects';
+import { scrambleText } from '../utils/animeEffects';
 
 interface HomePageProps {
   onOpenResumeModal: () => void;
@@ -49,6 +46,46 @@ const fadeUp = {
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const heroNameRef = useRef<HTMLSpanElement | null>(null);
+
+  // Dynamic Typewriter Effect for Role Titles
+  useEffect(() => {
+    const currentRole = PERSONAL_INFO.rolesList[roleIndex];
+    const typingSpeed = isDeleting ? 30 : 70;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setDisplayedText(currentRole.slice(0, displayedText.length + 1));
+        if (displayedText.length + 1 === currentRole.length) {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        setDisplayedText(currentRole.slice(0, displayedText.length - 1));
+        if (displayedText.length === 0) {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % PERSONAL_INFO.rolesList.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, roleIndex]);
+
+  // Scramble Text Effect on Name on load & hover
+  useEffect(() => {
+    if (heroNameRef.current) {
+      scrambleText(heroNameRef.current, PERSONAL_INFO.name, 800);
+    }
+  }, []);
+
+  const handleNameHover = () => {
+    if (heroNameRef.current) {
+      scrambleText(heroNameRef.current, PERSONAL_INFO.name, 500);
+    }
+  };
 
   const handleCopyEmail = () => {
     soundManager.playPop();
@@ -58,56 +95,97 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
   };
 
   return (
-    <div className="space-y-20 pt-24 sm:pt-28 pb-12">
-      {/* 1. BESPOKE HERO SECTION */}
+    <div className="space-y-24 pt-24 sm:pt-28 pb-16">
+      {/* 1. PERSONAL HERO SECTION WITH 3D GLOBE */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Personal Narrative & Quick Actions */}
+          
+          {/* Left Column: Personal Narrative & Direct Actions */}
           <motion.div 
             className="lg:col-span-6 space-y-6"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Status Pill */}
+            {/* Live Availability Status */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full apple-glass text-xs font-mono text-slate-300">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>{PERSONAL_INFO.currentStatus}</span>
+              <span>Software Engineer @ Data Aces • Chennai</span>
             </div>
 
-            {/* Editorial Headline */}
+            {/* Main Headline with Scramble Text */}
             <div className="space-y-2">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-display text-white leading-tight">
-                Hi, I'm <span className="text-gradient-violet-cyan">{PERSONAL_INFO.name}</span>
+                Hi, I'm{' '}
+                <span 
+                  ref={heroNameRef} 
+                  onMouseEnter={handleNameHover}
+                  className="text-gradient-violet-cyan cursor-pointer selection:bg-accent-violet/30"
+                  title="Click or hover to scramble text"
+                >
+                  {PERSONAL_INFO.name}
+                </span>
               </h1>
-              <p className="text-xl sm:text-2xl font-mono text-accent-teal font-medium">
-                Full Stack & AI Engineer
-              </p>
+
+              {/* Dynamic Updating Subtitle Typewriter */}
+              <div className="h-10 flex items-center gap-2">
+                <span className="text-lg sm:text-2xl font-mono text-accent-teal font-medium">
+                  {displayedText}
+                </span>
+                <span className="w-2 h-6 bg-accent-violet animate-pulse rounded-sm" />
+              </div>
             </div>
 
-            {/* Concise Human Introduction */}
+            {/* Human Personal Intro */}
             <p className="text-base text-slate-300 leading-relaxed font-sans max-w-xl">
-              I design and build <strong className="text-white font-semibold">conversational AI assistants</strong>, <strong className="text-white font-semibold">scalable Python & Django backends</strong>, and <strong className="text-accent-teal font-semibold">automated CRM workflows</strong> that work reliably in production.
+              I'm a software engineer who loves turning complex problems into clean, practical products. At <strong className="text-white font-semibold">Data Aces</strong> in Chennai, I build conversational AI tools, RAG pipelines, scalable Python backends, and Salesforce CRM automations that real people use every day.
             </p>
 
-            {/* Key Metadata Pills */}
-            <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-slate-400">
-              <span className="flex items-center gap-1.5 apple-glass px-3 py-1.5 rounded-xl">
-                <MapPin className="w-3.5 h-3.5 text-accent-amber" />
-                {PERSONAL_INFO.location}
-              </span>
-              <span className="flex items-center gap-1.5 apple-glass px-3 py-1.5 rounded-xl">
-                <Briefcase className="w-3.5 h-3.5 text-accent-violet" />
-                {PERSONAL_INFO.currentRole}
-              </span>
-              <span className="flex items-center gap-1.5 apple-glass px-3 py-1.5 rounded-xl">
-                <Award className="w-3.5 h-3.5 text-accent-cyan" />
-                MCA Distinction
-              </span>
+            {/* Personal Highlights Matrix */}
+            <div className="grid grid-cols-2 gap-2.5 pt-1 text-xs font-mono">
+              <div className="p-3 rounded-2xl apple-glass flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-accent-cyan/15 text-accent-cyan flex items-center justify-center flex-shrink-0">
+                  <GraduationCap className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-white font-semibold">MCA Distinction</div>
+                  <div className="text-[10px] text-slate-400">DG Vaishnav College</div>
+                </div>
+              </div>
+
+              <div className="p-3 rounded-2xl apple-glass flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-accent-violet/15 text-accent-violet flex items-center justify-center flex-shrink-0">
+                  <Briefcase className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-white font-semibold">Software Engineer</div>
+                  <div className="text-[10px] text-slate-400">Data Aces (05/2025–Present)</div>
+                </div>
+              </div>
+
+              <div className="p-3 rounded-2xl apple-glass flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-accent-amber/15 text-accent-amber flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-white font-semibold">Chennai, India</div>
+                  <div className="text-[10px] text-slate-400">IST (UTC +5:30)</div>
+                </div>
+              </div>
+
+              <div className="p-3 rounded-2xl apple-glass flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-white font-semibold">Certified Specialist</div>
+                  <div className="text-[10px] text-slate-400">Salesforce Agentforce</div>
+                </div>
+              </div>
             </div>
 
-            {/* Action Bar */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            {/* Quick Action Dock */}
+            <div className="flex flex-wrap items-center gap-3 pt-3">
               <NavLink
                 to="/projects"
                 onClick={() => soundManager.playPop()}
@@ -143,116 +221,68 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
                 className="px-3.5 py-3 rounded-xl bg-white/[0.04] hover:bg-white/10 text-slate-300 border border-white/10 text-sm flex items-center gap-1.5 transition-all cursor-pointer"
               >
                 <Sparkles className="w-3.5 h-3.5 text-accent-amber" />
-                <span>Story</span>
+                <span>My Story</span>
               </NavLink>
             </div>
           </motion.div>
 
-          {/* Right Column: Live Interactive Systems Canvas (Replaces generic widget) */}
+          {/* Right Column: Interactive 3D Globe with Clean Glass Card */}
           <motion.div 
-            className="lg:col-span-6 w-full"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 w-full flex items-center justify-center relative"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <SystemsPreviewCanvas />
+            <InteractiveGlobe darkMode={true} />
           </motion.div>
         </div>
       </section>
 
-      {/* 2. DEVELOPER IDENTITY & EXPERTISE GRID */}
+      {/* 2. WHO I AM & WHAT DRIVES ME */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Card 1: Current Focus @ Data Aces */}
-          <div className="apple-glass shimmer-border rounded-3xl p-6 space-y-3 flex flex-col justify-between">
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-emerald-400 font-semibold flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Current Focus
-                </span>
-                <span className="text-[11px] font-mono text-slate-400">Data Aces</span>
-              </div>
-              <h3 className="text-lg font-bold font-display text-white">
-                Conversational AI & Backends
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Building multi-agent LangGraph workflows, RAG search engines with Weaviate, and automated Salesforce WhatsApp messaging pipelines.
-              </p>
+          {/* Pillar 1 */}
+          <div className="apple-glass shimmer-border rounded-3xl p-6 space-y-3">
+            <div className="w-10 h-10 rounded-2xl bg-accent-violet/15 text-accent-violet flex items-center justify-center text-xl">
+              💡
             </div>
-            <NavLink
-              to="/experience"
-              onClick={() => soundManager.playPop()}
-              className="text-xs font-mono text-accent-teal hover:text-white flex items-center gap-1 pt-2 border-t border-white/10"
-            >
-              <span>View Experience Details</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </NavLink>
+            <h3 className="text-lg font-bold font-display text-white">
+              Practical Engineering
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              I prioritize clean code, resilient database schemas, and maintainable architectures over overengineered complexity.
+            </p>
           </div>
 
-          {/* Card 2: Core Production Stack */}
-          <div className="apple-glass shimmer-border rounded-3xl p-6 space-y-3 flex flex-col justify-between">
-            <div className="space-y-2">
-              <div className="text-xs font-mono text-accent-cyan font-semibold flex items-center gap-1.5">
-                <Code2 className="w-3.5 h-3.5" /> Production Stack
-              </div>
-              <h3 className="text-lg font-bold font-display text-white">
-                Primary Technologies
-              </h3>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {['Python', 'Django', 'LangGraph', 'Weaviate', 'Salesforce', 'PostgreSQL', 'DBT', 'React'].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2.5 py-1 rounded-lg glass-subtle text-[11px] font-mono text-slate-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+          {/* Pillar 2 */}
+          <div className="apple-glass shimmer-border rounded-3xl p-6 space-y-3">
+            <div className="w-10 h-10 rounded-2xl bg-accent-cyan/15 text-accent-cyan flex items-center justify-center text-xl">
+              🤖
             </div>
-            <NavLink
-              to="/skills"
-              onClick={() => soundManager.playPop()}
-              className="text-xs font-mono text-accent-teal hover:text-white flex items-center gap-1 pt-2 border-t border-white/10"
-            >
-              <span>Explore All Skills & Tools</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </NavLink>
+            <h3 className="text-lg font-bold font-display text-white">
+              Applied AI & RAG
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Connecting generative models with real-world databases using Weaviate vector search and LangGraph multi-agent tools.
+            </p>
           </div>
 
-          {/* Card 3: Academic Honors & Verified Credentials */}
-          <div className="apple-glass shimmer-border rounded-3xl p-6 space-y-3 flex flex-col justify-between">
-            <div className="space-y-2">
-              <div className="text-xs font-mono text-accent-amber font-semibold flex items-center gap-1.5">
-                <Award className="w-3.5 h-3.5" /> Honors & Credentials
-              </div>
-              <h3 className="text-lg font-bold font-display text-white">
-                MCA Distinction & Certified
-              </h3>
-              <ul className="text-xs text-slate-300 space-y-1 leading-relaxed">
-                <li className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-accent-teal flex-shrink-0" />
-                  <span>Master of Computer Applications (Distinction)</span>
-                </li>
-                <li className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-accent-teal flex-shrink-0" />
-                  <span>Salesforce Certified Agentforce Specialist</span>
-                </li>
-              </ul>
+          {/* Pillar 3 */}
+          <div className="apple-glass shimmer-border rounded-3xl p-6 space-y-3">
+            <div className="w-10 h-10 rounded-2xl bg-accent-amber/15 text-accent-amber flex items-center justify-center text-xl">
+              🚀
             </div>
-            <NavLink
-              to="/about"
-              onClick={() => soundManager.playPop()}
-              className="text-xs font-mono text-accent-teal hover:text-white flex items-center gap-1 pt-2 border-t border-white/10"
-            >
-              <span>Read Background & Journey</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </NavLink>
+            <h3 className="text-lg font-bold font-display text-white">
+              End-to-End Execution
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              From backend APIs in Django to automated CRM triggers with Salesforce and interactive frontend dashboards in React.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* 3. FEATURED CASE STUDIES SHOWCASE */}
+      {/* 3. FEATURED PROJECTS SHOWCASE */}
       <motion.section 
         className="max-w-7xl mx-auto px-4 sm:px-6 space-y-8"
         initial={{ opacity: 0, y: 20 }}
@@ -266,7 +296,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
               <Layers className="w-3.5 h-3.5" /> Featured Work
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold font-display text-white mt-1">
-              Production Projects & Systems
+              Projects I've Built
             </h2>
           </div>
           <NavLink
@@ -334,7 +364,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
         </motion.div>
       </motion.section>
 
-      {/* 4. CONTACT CTA */}
+      {/* 4. CONTACT & COLLABORATION CTA */}
       <motion.section 
         className="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-6 pt-4"
         initial={{ opacity: 0, y: 20 }}
@@ -343,11 +373,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
         <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-          Ready to build something impactful?
+          Let's connect & build something great.
         </h2>
 
         <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto">
-          Based in Chennai, India. Let's talk about conversational AI, backend infrastructure, and CRM automations.
+          Based in Chennai, India. Reach out for software engineering opportunities, AI projects, or technical discussions.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
@@ -357,7 +387,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
             className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-accent-violet to-accent-indigo hover:opacity-95 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-accent-violet/30 transition-all cursor-pointer"
           >
             <Send className="w-4 h-4" />
-            <span>Start a Conversation</span>
+            <span>Get in Touch</span>
           </NavLink>
 
           <button
