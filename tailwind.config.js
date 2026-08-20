@@ -9,25 +9,30 @@ export default {
     extend: {
       colors: {
         bg: {
-          dark: '#08090D',
-          darker: '#050608',
-          card: '#0E1017',
-          'card-hover': '#141824',
-          subtle: '#121520',
+          dark: '#08090E',
+          darker: '#05060A',
+          card: '#0D0F18',
+          'card-hover': '#131724',
+          subtle: '#111420',
           border: 'rgba(255, 255, 255, 0.08)',
-          'border-hover': 'rgba(124, 58, 237, 0.3)',
+          'border-hover': 'rgba(59, 130, 246, 0.35)',
           light: '#F8FAFC',
           'light-card': '#FFFFFF',
           'light-subtle': '#F1F5F9',
         },
         accent: {
-          violet: '#7C3AED',
-          indigo: '#6366F1',
-          cyan: '#06B6D4',
-          teal: '#22D3EE',
-          amber: '#F59E0B',
-          coral: '#F43F5E',
+          blue: '#3B82F6',
+          cobalt: '#2563EB',
+          sky: '#0EA5E9',
+          teal: '#14B8A6',
           emerald: '#10B981',
+          amber: '#F59E0B',
+          slate: '#64748B',
+          // Compatibility fallbacks
+          violet: '#3B82F6',
+          indigo: '#2563EB',
+          cyan: '#0EA5E9',
+          coral: '#F43F5E',
         },
       },
       fontFamily: {
@@ -39,7 +44,7 @@ export default {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'glow-line': 'glowLine 3s ease infinite',
         'float': 'float 6s ease-in-out infinite',
-        'spin-slow': 'spin 12s linear infinite',
+        'spin-slow': 'spin 18s linear infinite',
       },
       keyframes: {
         glowLine: {
@@ -53,7 +58,7 @@ export default {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'radial-gradient(circle at 50% 20%, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.08) 45%, transparent 70%)',
+        'hero-glow': 'radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.12), rgba(16, 185, 129, 0.06) 45%, transparent 70%)',
       }
     },
   },

@@ -17,7 +17,7 @@ import {
   Sparkle
 } from 'lucide-react';
 import { PERSONAL_INFO, PROJECTS } from '../data/portfolioData';
-import { InteractiveGlobe } from '../components/InteractiveGlobe';
+import { HeroDeveloperConsole } from '../components/HeroDeveloperConsole';
 import { soundManager } from '../utils/soundEffects';
 import { scrambleText } from '../utils/animeEffects';
 
@@ -54,13 +54,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
   // Dynamic Typewriter Effect for Role Titles
   useEffect(() => {
     const currentRole = PERSONAL_INFO.rolesList[roleIndex];
-    const typingSpeed = isDeleting ? 30 : 70;
+    const typingSpeed = isDeleting ? 30 : 65;
 
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         setDisplayedText(currentRole.slice(0, displayedText.length + 1));
         if (displayedText.length + 1 === currentRole.length) {
-          setTimeout(() => setIsDeleting(true), 2000);
+          setTimeout(() => setIsDeleting(true), 2200);
         }
       } else {
         setDisplayedText(currentRole.slice(0, displayedText.length - 1));
@@ -74,7 +74,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
     return () => clearTimeout(timeout);
   }, [displayedText, isDeleting, roleIndex]);
 
-  // Scramble Text Effect on Name on load & hover
+  // Scramble Text Effect on Name on load
   useEffect(() => {
     if (heroNameRef.current) {
       scrambleText(heroNameRef.current, PERSONAL_INFO.name, 800);
@@ -83,7 +83,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
 
   const handleNameHover = () => {
     if (heroNameRef.current) {
-      scrambleText(heroNameRef.current, PERSONAL_INFO.name, 500);
+      scrambleText(heroNameRef.current, PERSONAL_INFO.name, 450);
     }
   };
 
@@ -96,7 +96,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
 
   return (
     <div className="space-y-24 pt-24 sm:pt-28 pb-16">
-      {/* 1. PERSONAL HERO SECTION WITH 3D GLOBE */}
+      {/* 1. PERSONAL HERO SECTION WITH 3D WORLD MAP GLOBE */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
@@ -108,20 +108,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Live Availability Status */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full apple-glass text-xs font-mono text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full apple-glass text-xs font-mono dark:text-slate-300 text-slate-700">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
               <span>Software Engineer @ Data Aces • Chennai</span>
             </div>
 
             {/* Main Headline with Scramble Text */}
             <div className="space-y-2">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-display text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-display dark:text-white text-slate-900 leading-tight">
                 Hi, I'm{' '}
                 <span 
                   ref={heroNameRef} 
-                  onMouseEnter={handleNameHover}
-                  className="text-gradient-violet-cyan cursor-pointer selection:bg-accent-violet/30"
-                  title="Click or hover to scramble text"
+                  className="text-gradient-blue-emerald selection:bg-blue-500/30"
                 >
                   {PERSONAL_INFO.name}
                 </span>
@@ -129,57 +127,57 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
 
               {/* Dynamic Updating Subtitle Typewriter */}
               <div className="h-10 flex items-center gap-2">
-                <span className="text-lg sm:text-2xl font-mono text-accent-teal font-medium">
+                <span className="text-lg sm:text-2xl font-mono text-blue-600 dark:text-accent-sky font-semibold">
                   {displayedText}
                 </span>
-                <span className="w-2 h-6 bg-accent-violet animate-pulse rounded-sm" />
+                <span className="w-2 h-6 bg-accent-blue animate-pulse rounded-sm" />
               </div>
             </div>
 
             {/* Human Personal Intro */}
-            <p className="text-base text-slate-300 leading-relaxed font-sans max-w-xl">
-              I'm a software engineer who loves turning complex problems into clean, practical products. At <strong className="text-white font-semibold">Data Aces</strong> in Chennai, I build conversational AI tools, RAG pipelines, scalable Python backends, and Salesforce CRM automations that real people use every day.
+            <p className="text-base dark:text-slate-300 text-slate-700 leading-relaxed font-sans max-w-xl">
+              I'm a software engineer who loves turning complex problems into clean, practical products. At <strong className="dark:text-white text-slate-900 font-semibold">Data Aces</strong> in Chennai, I build conversational AI tools, RAG pipelines, scalable Python backends, and Salesforce CRM automations that real people use every day.
             </p>
 
             {/* Personal Highlights Matrix */}
             <div className="grid grid-cols-2 gap-2.5 pt-1 text-xs font-mono">
               <div className="p-3 rounded-2xl apple-glass flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-accent-cyan/15 text-accent-cyan flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-blue-500/15 text-blue-600 dark:text-accent-sky flex items-center justify-center flex-shrink-0">
                   <GraduationCap className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-white font-semibold">MCA Distinction</div>
-                  <div className="text-[10px] text-slate-400">DG Vaishnav College</div>
+                  <div className="dark:text-white text-slate-900 font-semibold">MCA Distinction</div>
+                  <div className="text-[10px] dark:text-slate-400 text-slate-600">DG Vaishnav College</div>
                 </div>
               </div>
 
               <div className="p-3 rounded-2xl apple-glass flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-accent-violet/15 text-accent-violet flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
                   <Briefcase className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-white font-semibold">Software Engineer</div>
-                  <div className="text-[10px] text-slate-400">Data Aces (05/2025–Present)</div>
+                  <div className="dark:text-white text-slate-900 font-semibold">Software Engineer</div>
+                  <div className="text-[10px] dark:text-slate-400 text-slate-600">Data Aces (05/2025–Present)</div>
                 </div>
               </div>
 
               <div className="p-3 rounded-2xl apple-glass flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-accent-amber/15 text-accent-amber flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-600 dark:text-accent-amber flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-white font-semibold">Chennai, India</div>
-                  <div className="text-[10px] text-slate-400">IST (UTC +5:30)</div>
+                  <div className="dark:text-white text-slate-900 font-semibold">Chennai, India</div>
+                  <div className="text-[10px] dark:text-slate-400 text-slate-600">IST (UTC +5:30)</div>
                 </div>
               </div>
 
               <div className="p-3 rounded-2xl apple-glass flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-teal-500/15 text-teal-600 dark:text-accent-teal flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-white font-semibold">Certified Specialist</div>
-                  <div className="text-[10px] text-slate-400">Salesforce Agentforce</div>
+                  <div className="dark:text-white text-slate-900 font-semibold">Certified Specialist</div>
+                  <div className="text-[10px] dark:text-slate-400 text-slate-600">Salesforce Agentforce</div>
                 </div>
               </div>
             </div>
@@ -189,7 +187,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
               <NavLink
                 to="/projects"
                 onClick={() => soundManager.playPop()}
-                className="px-5 py-3 rounded-xl bg-gradient-to-r from-accent-violet to-accent-indigo hover:opacity-95 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-accent-violet/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-95 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-blue-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
                 <span>View Projects</span>
                 <ArrowRight className="w-4 h-4" />
@@ -200,7 +198,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
                 className="px-4 py-3 rounded-xl apple-glass hover:border-white/30 text-slate-200 font-medium text-sm flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
                 title="Copy email to clipboard"
               >
-                {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-accent-cyan" />}
+                {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-accent-sky" />}
                 <span>{copiedEmail ? 'Email Copied!' : 'Copy Email'}</span>
               </button>
 
@@ -226,14 +224,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
             </div>
           </motion.div>
 
-          {/* Right Column: Interactive 3D Globe with Clean Glass Card */}
+          {/* Right Column: Interactive Developer Console Studio */}
           <motion.div 
             className="lg:col-span-6 w-full flex items-center justify-center relative"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <InteractiveGlobe darkMode={true} />
+            <HeroDeveloperConsole />
           </motion.div>
         </div>
       </section>
@@ -243,7 +241,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {/* Pillar 1 */}
           <div className="apple-glass shimmer-border rounded-3xl p-6 space-y-3">
-            <div className="w-10 h-10 rounded-2xl bg-accent-violet/15 text-accent-violet flex items-center justify-center text-xl">
+            <div className="w-10 h-10 rounded-2xl bg-blue-500/15 text-accent-sky flex items-center justify-center text-xl">
               💡
             </div>
             <h3 className="text-lg font-bold font-display text-white">
@@ -256,7 +254,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
 
           {/* Pillar 2 */}
           <div className="apple-glass shimmer-border rounded-3xl p-6 space-y-3">
-            <div className="w-10 h-10 rounded-2xl bg-accent-cyan/15 text-accent-cyan flex items-center justify-center text-xl">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xl">
               🤖
             </div>
             <h3 className="text-lg font-bold font-display text-white">
@@ -269,7 +267,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
 
           {/* Pillar 3 */}
           <div className="apple-glass shimmer-border rounded-3xl p-6 space-y-3">
-            <div className="w-10 h-10 rounded-2xl bg-accent-amber/15 text-accent-amber flex items-center justify-center text-xl">
+            <div className="w-10 h-10 rounded-2xl bg-amber-500/15 text-accent-amber flex items-center justify-center text-xl">
               🚀
             </div>
             <h3 className="text-lg font-bold font-display text-white">
@@ -292,7 +290,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
       >
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-4">
           <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-accent-cyan font-bold flex items-center gap-1.5">
+            <div className="text-xs font-mono uppercase tracking-wider text-accent-sky font-bold flex items-center gap-1.5">
               <Layers className="w-3.5 h-3.5" /> Featured Work
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold font-display text-white mt-1">
@@ -302,7 +300,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
           <NavLink
             to="/projects"
             onClick={() => soundManager.playPop()}
-            className="text-xs font-mono text-accent-teal hover:text-white flex items-center gap-1 group"
+            className="text-xs font-mono text-accent-sky hover:text-white flex items-center gap-1 group"
           >
             <span>View all 5 projects</span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -324,12 +322,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
             >
               <div className="space-y-3">
                 <div className="flex items-center">
-                  <span className="px-2.5 py-1 rounded-lg glass-subtle text-accent-teal text-[11px] font-mono border border-accent-violet/20">
+                  <span className="px-2.5 py-1 rounded-lg glass-subtle text-accent-sky text-[11px] font-mono border border-blue-500/20">
                     {project.category}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold font-display text-white group-hover:text-accent-teal transition-colors">
+                <h3 className="text-lg font-bold font-display text-white group-hover:text-accent-sky transition-colors">
                   {project.title}
                 </h3>
 
@@ -353,7 +351,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
                 <NavLink
                   to={`/projects#${project.id}`}
                   onClick={() => soundManager.playPop()}
-                  className="inline-flex items-center gap-1.5 text-xs font-mono text-accent-teal group-hover:text-white transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono text-accent-sky group-hover:text-white transition-colors cursor-pointer"
                 >
                   <span>Read Case Study</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -384,7 +382,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
           <NavLink
             to="/contact"
             onClick={() => soundManager.playPop()}
-            className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-accent-violet to-accent-indigo hover:opacity-95 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-accent-violet/30 transition-all cursor-pointer"
+            className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-95 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-blue-600/30 transition-all cursor-pointer"
           >
             <Send className="w-4 h-4" />
             <span>Get in Touch</span>
@@ -394,7 +392,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenResumeModal }) => {
             onClick={handleCopyEmail}
             className="px-6 py-3.5 rounded-xl apple-glass text-slate-200 font-medium text-sm flex items-center gap-2 transition-all cursor-pointer"
           >
-            {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-accent-cyan" />}
+            {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-accent-sky" />}
             <span>{copiedEmail ? 'Email Copied!' : 'Copy Email Address'}</span>
           </button>
         </div>
