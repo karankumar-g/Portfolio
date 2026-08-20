@@ -9,6 +9,7 @@ import {
   Globe,
   BrainCircuit,
   Database,
+  Cloud,
   Building2,
   Award
 } from 'lucide-react';
@@ -21,6 +22,7 @@ const categoryIcons: { [key: string]: React.ElementType } = {
   'Frameworks & Web': Globe,
   'AI & Agentic Systems': BrainCircuit,
   'Databases & Cloud': Database,
+  Cloud,
   'CRM & Enterprise': Building2,
 };
 
@@ -28,7 +30,7 @@ const skillIcons: { [key: string]: string } = {
   'Python': '🐍',
   'JavaScript': '⚡',
   'TypeScript': '🔷',
-  'SQL': '🗃️',
+  'SQL': '🗄️',
   'Django': '🎯',
   'Django REST Framework': '🔗',
   'React': '⚛️',
@@ -39,15 +41,16 @@ const skillIcons: { [key: string]: string } = {
   'Weaviate': '🔮',
   'MLflow': '📊',
   'PostgreSQL': '🐘',
+  'Snowflake': '❄️',
   'Redis': '⚡',
   'MongoDB': '🍃',
+  'AWS & Azure': '☁️',
   'DBT': '🔶',
   'Prefect': '🌊',
-  'AWS & Azure': '☁️',
   'Git & GitHub': '📦',
   'Salesforce CRM & Automation': '☁️',
   'WhatsApp Business API': '💬',
-  'Salesforce Agentforce': '🤝',
+  'Salesforce Agentforce': '🤖',
 };
 
 const containerVariants = {

@@ -345,15 +345,22 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     ]
   },
   {
-    category: 'Databases & Cloud',
-    description: 'Data storage, cloud SDKs, and pipelines',
+    category: 'Databases',
+    description: 'Relational, analytical, and vector data stores',
     skills: [
       { name: 'PostgreSQL', level: 'Expert', highlight: true, description: 'Relational data modeling & optimization', percentage: 92 },
+      { name: 'Snowflake', level: 'Expert', highlight: true, description: 'Cloud data warehousing & analytics', percentage: 94 },
       { name: 'Redis', level: 'Advanced', highlight: true, description: 'In-memory caching & session store', percentage: 88 },
-      { name: 'MongoDB', level: 'Proficient', description: 'Document storage & collections', percentage: 82 },
+      { name: 'MongoDB', level: 'Proficient', description: 'Document storage & collections', percentage: 82 }
+    ]
+  },
+  {
+    category: 'Cloud & DevOps',
+    description: 'Cloud infrastructure, data pipelines, and version control',
+    skills: [
+      { name: 'AWS & Azure', level: 'Proficient', highlight: true, description: 'Cloud storage SDKs & compute', percentage: 86 },
       { name: 'DBT', level: 'Advanced', highlight: true, description: 'SQL data transformations & modeling', percentage: 90 },
       { name: 'Prefect', level: 'Advanced', highlight: true, description: 'DAG workflow scheduling', percentage: 90 },
-      { name: 'AWS & Azure', level: 'Proficient', description: 'Cloud storage SDKs & compute', percentage: 84 },
       { name: 'Git & GitHub', level: 'Expert', description: 'Version control & repository management', percentage: 95 }
     ]
   },
